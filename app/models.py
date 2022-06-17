@@ -52,7 +52,7 @@ class business(models.Model):
     email = models.EmailField(max_length=255)
     contact= models.IntegerField(default = 0)
     def __str__(self):
-            return str (self.name)
+            return str (self.bizName)
 
     # create_business()
     def createBusiness(self):
@@ -97,7 +97,7 @@ class policeStation(models.Model):
     email = models.EmailField(max_length=255)
     contact= models.IntegerField(default = 0)
     def __str__(self):
-            return str (self.name)
+            return str (self.stationName)
 
     # create
     def createStation(self):
@@ -135,7 +135,7 @@ class hospital(models.Model):
     email = models.EmailField(max_length=255)
     contact= models.IntegerField(default = 0)
     def __str__(self):
-            return str (self.name)
+            return str (self.hName)
 
 
     # create
@@ -169,12 +169,12 @@ class hospital(models.Model):
 class school(models.Model):
     teachersNum = models.IntegerField(default=0)
     studentsNum = models.IntegerField(default=0)
-    name = models.CharField(max_length=255)
+    schlName = models.CharField(max_length=255)
     zone = models.ForeignKey(hood, on_delete=models.CASCADE)
     email = models.EmailField(max_length=255)
     contact= models.IntegerField(default = 0)
     def __str__(self):
-            return str (self.name)
+            return str (self.schlName)
 
    
     # create
@@ -187,12 +187,12 @@ class school(models.Model):
 
     # find_station(station_id)
     @classmethod
-    def findSchool(cls, policeStation_id):
-        business= business.objects.filter(policeStation_id=policeStation_id).all()
+    def findSchool(cls, school_id):
+        business= business.objects.filter(school_id=school_id).all()
 
     # update
-    def updateSchool(self,  new_stationName):
-        self.stationName = new_stationName
+    def updateSchool(self,  new_schlName):
+        self.schlName = new_schlName
         self.save()
 
     @classmethod
