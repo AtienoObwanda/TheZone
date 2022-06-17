@@ -27,40 +27,16 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
-
-ul {
-  margin: 0;
-}
-
-.bg-steel {
-  background-color: #fff;
-}
-
-.site-header .navbar-nav .nav-link {
-  color: #cbd5db;
-  font-family: 'Newyork';
-  font-weight: 800;
-  color: #000;
-  font-size: 13px;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-  color: #ee4723;
-}
-
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 900;
-  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px !important; */
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-
-}
 .image-background {
   height: 100vh;
   min-height: 500px;
-  background-image: url('../images/home.webp');
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image: url('../images/z1.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
 }
 .image-background h1 {
   color: #fff;
@@ -146,18 +122,9 @@ ul {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-.hideHover{
-  display: none;
-}
-
-.showHover:hover .hideHover{
-  display: block;
-  margin-bottom: -2em;
-}
 
 
-.hero span {
-  color: #ee4723;
-  border-bottom: 6px solid #ffff;
-  border-radius: 20px;
+.baseContainer{
+  max-width: 100%;
+  overflow-x: hidden;
 }

@@ -10,15 +10,15 @@
     <script src={% static 'art/main.js' %} defer></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     {% if title %}
-        <title>ArtSpace-{{ title }}</title>
+        <title>The Zone-{{ title }}</title>
     {% else %}
-        <title>Art Space</title>
+        <title>The Zone</title>
     {% endif %}    
     
     <!--CSS -->
     {% block styles %}
     {% bootstrap_css %}
-         <link rel="stylesheet" type="text/css" href="{% static 'art/style.css' %}">
+         <link rel="stylesheet" type="text/css" href="{% static 'zone/style.css' %}">
     {% endblock %}
 
 </head>
@@ -28,7 +28,7 @@
     
 
 
-    <div class="container-fluid" style="background-color: #fff;">
+    <div class="container-fluid baseContainer">
         {% block content %}{% endblock %}
         
     </div>
