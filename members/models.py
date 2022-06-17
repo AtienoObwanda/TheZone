@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
 
-from app.models import hood
+# from app.models import hood
 
 
 
@@ -13,12 +13,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name='user', related_name='profile', on_delete=models.CASCADE)
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    zone = models.ForeignKey(hood, on_delete=models.CASCADE)
+    # zone = models.ForeignKey(hood, on_delete=models.CASCADE)
     # country = models.CharField(max_length=50)
     profileImage = models.ImageField(default='default.png',upload_to='projectPics')
     bio=models.TextField(max_length=50, blank=True, default=f'The Zone Community')
-    phone= models.IntegerField()
-    idNum= models.IntegerField()
+    phone= models.IntegerField(blank=True, )
+    idNum= models.IntegerField(blank=True, )
 
 
 

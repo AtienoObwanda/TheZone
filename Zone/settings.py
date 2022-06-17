@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'crispy_forms',
-    'app',
+    'hood',
     'members'
 ]
 
@@ -61,7 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                 os.path.join(BASE_DIR, 'templates'),
-                os.path.join(BASE_DIR, 'app', 
+                os.path.join(BASE_DIR, 'hood', 
                  'templates/app'),
                 os.path.join(BASE_DIR, 'members', 
                  'templates/members'),
