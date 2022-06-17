@@ -55,26 +55,26 @@ class business(models.Model):
             return str (self.name)
 
     # create_business()
-    def create_business(self):
+    def createBusiness(self):
         self.save()
 
     # delete_business()
-    def delete_business(self):
+    def deleteBusiness(self):
         self.delete()
 
     # find_business(business_id)
     @classmethod
-    def find_business(cls, business_id):
+    def findBusiness(cls, business_id):
         business= business.objects.filter(business_id=business_id).all()
 
     # update_business()
-    def update_business(self,  new_bizName):
+    def updateBusiness(self,  new_bizName):
         self.bizName = new_bizName
         self.save()
 
     # search business
     @classmethod
-    def search_business(cls, bizName):
+    def searchBusiness(cls, bizName):
         return cls.objects.filter(business__bizName__icontains=bizName).all()
 
     @classmethod
