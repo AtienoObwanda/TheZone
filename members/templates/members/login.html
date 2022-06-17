@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-4"></div>
       <div class="col-4 pt-5 mt-5 formBg">
-        <h1 class="text-center">LOGIN</h1>
+        <h1 class="text-center">WELCOME BACK</h1>
         <form action="{% url 'login' %}" method="POST">
           {% csrf_token %} 
           {{ form|crispy}}    
@@ -22,7 +22,7 @@
         </br>
         </br>
         <small class="text-muted ">New to Mich? <a class="text-muted" href="{% url 'register' %}" style="text-decoration: none;">Sign Up</a></small>
-      </br><small class="text-muted "><a class="text-muted" href="{% url 'projects' %}" style="text-decoration: none;">Home</a></small>
+      </br><small class="text-muted "><a class="text-muted" href="{% url 'home' %}" style="text-decoration: none;">Home</a></small>
         </form>
       </div>
       <div class="col-4"></div>
