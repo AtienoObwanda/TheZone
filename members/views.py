@@ -22,27 +22,40 @@ def register(request):
 
 
 
-
+# update profile
 def profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('dashboard')
+    else:
+        form=ProfileForm()
     
-    return render(request, 'members/profile.html') 
+    return render(request, 'members/profile.html', {'form': form}) 
 
+
+# view account
 class AccountView(LoginRequiredMixin,View):
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
         zone = profile.zone.all()
-        if zone is None:
-            return render(request, 'members/dashboard.html', {'profile': profile, 'zone': zone, 'profile' : profile})
+     
 
-            
-        else: redirect('profile')
 
+        return render(request, 'members/dashboard.html', {'profile': profile, 'zone': zone, 'profile' : profile})
+
+      
+# select hood
 class HoodView(LoginRequiredMixin,View):
-    def get(self, request, pk, *args, **kwargs):
+    def get(self, request, pk,  *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
-        zone = profile.zone.all()
-        if zone:
-            return render('dashboard')
-        else: return render(request, 'members/profile.html', {'user':user})
+       
+        
+        
+        
+        return render(request, 'members/hood.html',{'user':user}) 
+            
+        

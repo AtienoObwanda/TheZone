@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username}profile'
 
-#   Signals
+# Crop Image
     def save(self, *args,**kwargs):
         super(UserProfile, self).save(*args,**kwargs)
  
@@ -33,15 +33,17 @@ class UserProfile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-    @receiver(post_save, sender=User)
-    def create_profile(sender, instance, created, **kwargs):
-        if created:
-            UserProfile.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_profile(sender, instance, **kwargs):
+#   Signals
+    # @receiver(post_save, sender=User)
+    # def create_profile(sender, instance, created, **kwargs):
+    #     if created:
+    #         UserProfile.objects.create(user=instance)
+
+    # @receiver(post_save, sender=User)
+    # def save_profile(sender, instance, **kwargs):
         
-        instance.profile.save()
+    #     instance.profile.save()
 
 
 #   methods:
