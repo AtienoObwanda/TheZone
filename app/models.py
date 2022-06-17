@@ -16,7 +16,6 @@ class hood(models.Model):
     def __str__(self):
             return str (self.zoneName)
 
-    
     # create
     def createHood(self):
         self.save()
@@ -34,7 +33,7 @@ class hood(models.Model):
     def updateHood(self,  new_zoneName):
         self.zoneName = new_zoneName
         self.save()
-        
+
     def updateOccupnts(self,  new_zoneOccupants):
         self.zoneOccupants = new_zoneOccupants
         self.save()
