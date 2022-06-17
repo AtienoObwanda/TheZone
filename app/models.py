@@ -34,7 +34,7 @@ class hood(models.Model):
         self.zoneName = new_zoneName
         self.save()
 
-    def updateOccupnts(self,  new_zoneOccupants):
+    def updateOccupants(self,  new_zoneOccupants):
         self.zoneOccupants = new_zoneOccupants
         self.save()
 
