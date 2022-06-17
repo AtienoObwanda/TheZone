@@ -1,6 +1,3 @@
-import email
-from unicodedata import name
-import zoneinfo
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone

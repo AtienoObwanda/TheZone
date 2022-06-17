@@ -5,20 +5,20 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
 
-# from app.models import hood
+from hood.models import hood
 
 
 
-class Profile(models.Model):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, verbose_name='user', related_name='profile', on_delete=models.CASCADE)
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    # zone = models.ForeignKey(hood, on_delete=models.CASCADE)
+    zone = models.ForeignKey(hood, on_delete=models.CASCADE)
     # country = models.CharField(max_length=50)
     profileImage = models.ImageField(default='default.png',upload_to='projectPics')
     bio=models.TextField(max_length=50, blank=True, default=f'The Zone Community')
-    phone= models.IntegerField(blank=True, )
-    idNum= models.IntegerField(blank=True, )
+    phone= models.IntegerField(blank=True,null=True, default=0)
+    idNum= models.IntegerField(blank=True, null=True, default=0)
 
 
 
@@ -26,24 +26,24 @@ class Profile(models.Model):
         return f'{self.user.username}profile'
 
 #   Signals
-    def save(self, *args,**kwargs):
-        super(Profile, self).save(*args,**kwargs)
+    # def save(self, *args,**kwargs):
+    #     super(Profile, self).save(*args,**kwargs)
  
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output_size=(300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    #     img = Image.open(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size=(300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
-    @receiver(post_save, sender=User)
-    def create_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
+    # @receiver(post_save, sender=User)
+    # def create_profile(sender, instance, created, **kwargs):
+    #     if created:
+    #         Profile.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_profile(sender, instance, **kwargs):
+    # @receiver(post_save, sender=User)
+    # def save_profile(sender, instance, **kwargs):
         
-        instance.profile.save()
+    #     instance.profile.save()
 
 
 #   methods:
