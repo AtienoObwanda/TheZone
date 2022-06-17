@@ -23,16 +23,18 @@ def register(request):
 
 
 # update profile
-def profile(request):
+def profile(request, pk):
+    profile = UserProfile.objects.get(pk=pk)
+
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST,instance=request.user.profile)
         if form.is_valid(): 
             form.save()
-            return redirect('dashboard')
+            return redirect('dashboard',pk)
     else:
-        form=ProfileForm()
+        form=ProfileForm(instance=request.user)
     
-    return render(request, 'members/profile.html', {'form': form}) 
+    return render(request, 'members/profile.html', {'form': form, 'profile': profile}) 
 
 
 # view account
