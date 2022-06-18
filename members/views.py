@@ -15,10 +15,26 @@ def register(request):
             form.save()
             # send_welcome_email(username,email)
             # HttpResponseRedirect('login')
-            return redirect('login')
+            return redirect('joinhood')
     else:
         form = UserRegistrationForm()
     return render(request, 'members/register.html', {'form': form}) 
+
+def getStarted(request):
+    hoods = hood.objects.all()
+
+    return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -28,13 +44,6 @@ def profile(request):
    
     
     return render(request, 'members/profile.html') 
-
-
-def getStarted(request):
-    hoods = hood.objects.all()
-
-    return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
-
 
 # view account
 class AccountView(LoginRequiredMixin,View):

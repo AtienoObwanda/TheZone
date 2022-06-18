@@ -139,7 +139,7 @@ STATIC_URL = 'static/'
 
 
 
-LOGIN_REDIRECT_URL = 'profile'
+# LOGIN_REDIRECT_URL = 'joinhood'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
 
