@@ -1,1 +1,8 @@
 {{hood.zoneName}}
+
+
+
+<form method="POST" action="{% url 'exitHood' hood.pk %}">
+    {% csrf_token %}
+    <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">EXIT</button>
+</form>

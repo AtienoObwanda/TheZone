@@ -47,9 +47,9 @@ class addHood(LoginRequiredMixin, View):
 
 class exitHood(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
-        request.user.profile.hood = None
+        request.user.profile.zone = None
         request.user.profile.save()
-        return redirect('joinHood')       
+        return redirect('joinhood')       
 
 
 def hoodHome(request):
