@@ -9,14 +9,18 @@
         <div class="col-md-10 mb-5">
             <div class="row p-2 bg-white border rounded">
                 <div class="col-md-3 mt-1">
-                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg">
+                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"
+                    style="height: 150px;"
+                    >
                 </div>
                 <div class="col-md-6 mt-1">
                     <h5>{{hood.zoneName}}</h5>
                     
                     <p class="text-justify text-truncate para mb-0">
-                        description
-                        <br><br></p>
+                      Location:  {{hood.zoneLocation}}  <br>
+                      Created on: {{hood.zoneCreationDate|date}}  <br>
+                      Members: {{hood.zoneOccupants}}
+                       </p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                    
