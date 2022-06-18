@@ -27,12 +27,13 @@ def profile(request, pk):
     profile = UserProfile.objects.get(pk=pk)
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST,instance=request.user.profile)
+        form = ProfileForm(request.POST)
         if form.is_valid(): 
             form.save()
             return redirect('dashboard',pk)
     else:
-        form=ProfileForm(instance=request.user)
+        form=ProfileForm()
+
     
     return render(request, 'members/profile.html', {'form': form, 'profile': profile}) 
 

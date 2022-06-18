@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, verbose_name='user', related_name='profile', on_delete=models.CASCADE)
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    zone = models.ForeignKey(hood, on_delete=models.CASCADE)
+    zone = models.ForeignKey(hood, on_delete=models.CASCADE, null=True)
     profileImage = models.ImageField(default='default.png',upload_to='projectPics')
     phone= models.IntegerField(blank=True,null=True, default=0)
     idNum= models.IntegerField(blank=True, null=True, default=0)
@@ -23,27 +23,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username}profile'
 
-# Crop Image
-    def save(self, *args,**kwargs):
-        super(UserProfile, self).save(*args,**kwargs)
- 
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output_size=(300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
-
-
 #   Signals
-    # @receiver(post_save, sender=User)
-    # def create_profile(sender, instance, created, **kwargs):
-    #     if created:
-    #         UserProfile.objects.create(user=instance)
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            UserProfile.objects.create(user=instance)
 
-    # @receiver(post_save, sender=User)
-    # def save_profile(sender, instance, **kwargs):
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
         
-    #     instance.profile.save()
+        instance.profile.save()
 
 
 #   methods:
