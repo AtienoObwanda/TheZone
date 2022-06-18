@@ -28,11 +28,13 @@
                     <div class="d-flex flex-column mt-4">
                         <form method="POST" action="{% url 'activeHood' hood.pk %}">
                             {% csrf_token %}
-                            <button class="btn btn-outline-primary btn-sm mt-2" type="submit">Unfollow</button>
+                            <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">JOIN</button>
                         </form>
+                        
+                        </div>
 
-                </div>
             </div>
+        </div>
         </div>
         {% endfor %}
 
