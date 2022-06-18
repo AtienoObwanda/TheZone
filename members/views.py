@@ -26,7 +26,14 @@ def getStarted(request):
     return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
 
 
-
+def joinHood(request, hood_pk):
+    joinedHood = hood.objects.get(pk=hood_pk)
+    if request.user.profile.zone == None:
+        request.user.profile.zone = joinedHood
+        request.user.profile.save()
+        return redirect('dashboard')
+    else:
+        return redirect('joinhood')
 
 
 
