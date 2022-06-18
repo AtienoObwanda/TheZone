@@ -1,3 +1,4 @@
+from multiprocessing.dummy import active_children
 from django.shortcuts import redirect, get_object_or_404, render
 from .forms import *
 from .models import UserProfile
@@ -26,20 +27,33 @@ def getStarted(request):
     return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
 
 
-def joinHood(request, hood_pk):
-    joinedHood = hood.objects.get(pk=hood_pk)
-    if request.user.profile.zone == None:
-        request.user.profile.zone = joinedHood
-        request.user.profile.save()
+# def joinHood(request, pk):
+#     joinedHood = hood.objects.get(pk=pk)
+#     if request.user.profile.zone == None:
+#         request.user.profile.zone = joinedHood
+#         request.user.profile.save()
+#         return redirect('home')
+#     else:
+#         return redirect('joinhood')
+
+
+class addHood(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        joinedHood = hood.objects.get(pk=pk)
+        if request.user.profile.zone == None:
+            request.user.profile.zone = joinedHood
+            request.user.profile.save()
         return redirect('dashboard')
+        
+
+
+def hoodHome(request):
+    current_hood = request.user.profile.zone
+    if current_hood == None:
+        return redirect('joinHood')
     else:
-        return redirect('joinhood')
-
-
-
-
-
-
+        showing = hood.objects.get(id=current_hood.id)
+        return render(request, 'members/hood.html', {'hood':showing})
 
 
 
@@ -62,14 +76,6 @@ class AccountView(LoginRequiredMixin,View):
         return render(request, 'members/dashboard.html')
 
       
-# select hood
-class HoodView(LoginRequiredMixin,View):
-    def get(self, request, pk,  *args, **kwargs):
-       
-       
-        
-        
-        
-        return render(request, 'members/hood.html') 
+
             
         

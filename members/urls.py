@@ -1,7 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+
 from . import views
-from members.views import AccountView, HoodView
+from members.views import AccountView, addHood
 
 
 urlpatterns = [
@@ -10,9 +11,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('profile/', views.profile, name='profile'),
     path('join-hood/', views.getStarted, name='joinhood'),
-    path('joined-hood/<int:pk>/', views.joinHood, name='activeHood'),
-    path('dashboard/', AccountView.as_view(), name='dashboard'),
-    path('hood/', HoodView.as_view, name='hood'),
+    path('dashboard/hood/<int:pk>/joined', addHood.as_view(), name='activeHood'),
+    # path('dashboard/joined-hood/<int:pk>/', views.joinHood, name='activeHood'),
+    path('dashboard/',views.hoodHome, name='dashboard'),
 
 
 ]
