@@ -3,6 +3,7 @@ from .forms import *
 from .models import UserProfile
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic import View
+from hood.models import *
 
 
 def register(request):
@@ -23,42 +24,36 @@ def register(request):
 
 
 # update profile
-def profile(request, pk):
-    profile = UserProfile.objects.get(pk=pk)
-
-    if request.method == 'POST':
-        form = ProfileForm(request.POST)
-        if form.is_valid(): 
-            form.save()
-            return redirect('dashboard',pk)
-    else:
-        form=ProfileForm()
-
+def profile(request):
+   
     
-    return render(request, 'members/profile.html', {'form': form, 'profile': profile}) 
+    return render(request, 'members/profile.html') 
+
+
+def getStarted(request):
+    hoods = hood.objects.all()
+
+    return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
 
 
 # view account
 class AccountView(LoginRequiredMixin,View):
     def get(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
-        user = profile.user
-        zone = profile.zone.all()
+     
      
 
 
-        return render(request, 'members/dashboard.html', {'profile': profile, 'zone': zone, 'profile' : profile})
+        return render(request, 'members/dashboard.html')
 
       
 # select hood
 class HoodView(LoginRequiredMixin,View):
     def get(self, request, pk,  *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
-        user = profile.user
+       
        
         
         
         
-        return render(request, 'members/hood.html',{'user':user}) 
+        return render(request, 'members/hood.html') 
             
         
