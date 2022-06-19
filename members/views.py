@@ -1,3 +1,4 @@
+from audioop import add
 from dis import dis
 from multiprocessing.dummy import active_children
 from django.shortcuts import redirect, get_object_or_404, render
@@ -5,6 +6,8 @@ from .forms import *
 from .models import UserProfile
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic import View
+from django.views.generic import DeleteView, ListView, UpdateView,DetailView, CreateView
+
 from hood.models import *
 
 
@@ -50,32 +53,35 @@ def hoodHome(request):
     hosps = hospital.objects.filter(zone=joinedHood.id).all() #  Fetch all Hospitals in the joined zone
     stations = policeStation.objects.filter(zone=joinedHood.id).all() # Fetch all police stations in the joined zone
     bizs = business.objects.filter(zone=joinedHood.id).all() # Fetch all businesses in the joined zone
-
+    posts = Post.objects.filter(zone=joinedHood.id).all() #  Fetch all posts in the joined zone
     if joinedHood == None:
         return redirect('joinHood')
     else:
         displayedHood = hood.objects.get(id=joinedHood.id)
         
-        return render(request, 'members/hood.html', {'hood':displayedHood, 'hosps': hosps,'stations':stations, 'bizs':bizs,'schls':schls})
+        return render(request, 'members/hood.html', {'hood':displayedHood, 'posts':posts,'hosps': hosps,'stations':stations, 'bizs':bizs,'schls':schls})
 
 
-
+class addPost(LoginRequiredMixin, CreateView):
+    model: Post
+    fields=['title', 'post']
+    template_name = 'members/addPost.html'
+    def form_valid(self, form):
+        form.instance.author=self.request.user
+        form.instance.zone = self.request.user.hood
+        return super().form_valid(form)
 
 
 
 # update profile
 def profile(request):
    
-    
     return render(request, 'members/profile.html') 
 
 # view account
 class AccountView(LoginRequiredMixin,View):
     def get(self, request, pk, *args, **kwargs):
-     
-     
-
-
+  
         return render(request, 'members/dashboard.html')
 
       
