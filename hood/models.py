@@ -226,3 +226,34 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('dashboard')
+    
+    def __str__(self):
+            return str (self.title)
+
+    def __str__(self):
+            return str (self.zoneName)
+
+    def get_absolute_url(self):
+        return reverse('joinhood')
+
+
+    # create
+    def createPost(self):
+        self.save()
+
+    # delete
+    def deletePost(self):
+        self.delete()
+
+    # find_station(station_id)
+    @classmethod
+    def findPost(cls, post_id):
+        post= Post.objects.filter(post_id=post_id).all()
+        return post
+
+    # update
+    def updatePost(self,  new_post):
+        self.post = new_post
+        self.save()
+
+  
