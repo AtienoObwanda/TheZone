@@ -54,6 +54,9 @@ class business(models.Model):
     def __str__(self):
             return str (self.bizName)
 
+    def get_absolute_url(self):
+        return reverse('dashboard')
+
     # create_business()
     def createBusiness(self):
         self.save()
@@ -99,6 +102,9 @@ class policeStation(models.Model):
     def __str__(self):
             return str (self.stationName)
 
+    def get_absolute_url(self):
+        return reverse('dashboard')
+
     # create
     def createStation(self):
         self.save()
@@ -137,6 +143,8 @@ class hospital(models.Model):
     def __str__(self):
             return str (self.hName)
 
+    def get_absolute_url(self):
+            return reverse('dashboard')
 
     # create
     def createHospital(self):
@@ -176,7 +184,8 @@ class school(models.Model):
     def __str__(self):
             return str (self.schlName)
 
-   
+    def get_absolute_url(self):
+            return reverse('dashboard')
     # create
     def createSchool(self):
         self.save()
@@ -210,6 +219,6 @@ class Post(models.Model):
     post=models.CharField(max_length=200)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     zone=models.ForeignKey(hood,on_delete=models.CASCADE)
-    
+
     def get_absolute_url(self):
         return reverse('dashboard')

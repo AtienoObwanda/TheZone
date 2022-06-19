@@ -72,6 +72,17 @@ class addPost(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class addBizz(LoginRequiredMixin, CreateView):
+    model = business
+    fields = ['bizName','email','contact']
+    template_name = 'members/addPost.html'
+    def form_valid(self, form):
+        form.instance.owner=self.request.user
+        form.instance.zone = self.request.user.profile.zone
+        return super().form_valid(form)
+
+
+
 
 
 # view account
