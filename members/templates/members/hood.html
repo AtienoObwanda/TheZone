@@ -24,44 +24,107 @@
 </div>
 <!-- POSTS | Police |Hospital| Schools |Bussinesses|-->
 <div class="container">
-<div class="row">
-    <div class="col-2 mt-3"></div>
-    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+<div class="row mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+    <div class="col-3 mt-3">
         <p class='lead text-center mt-2'>Business</p>
         {% for biz in bizs %}
-        {{biz.bizName}}
+            <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+            
+                <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
+                    {{biz.bizName}}
+                </h6>
+                <small style="margin-left: 1vw;">
+                    <span style="font-weight: bold;">
+                        Email:
+                    </span> {{biz.email}}
+                </small> </br>
+                <small style="margin-left: 1vw; padding-bottom:2em;">
+                    <span style="font-weight: bold;">
+                    Phone number:
+                    </span> {{biz.contact}}</small>
+            </div>       
+        
         {% endfor %}
 
     </div>
     <!--School-->
-    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+    <div class="col-3 mt-3">
         <p class='lead text-center mt-2'>School</p>
         {% for schl in schls %}
-        {{schl.schlName}}
+        <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+           
+            <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">{{schl.schlName}}
+            </h6>
+            <small style="margin-left: 1vw;">
+                <span style="font-weight: bold;">
+                    Teachers:
+                </span> {{schl.teachersNum}}
+            </small> |
+            <small>
+                <span style="font-weight: bold;">
+                    Students:
+                </span> {{schl.studentsNum}}
+            </small></br>
+            <small style="margin-left: 1vw;">
+                <span style="font-weight: bold;">
+                    Email:
+                </span> {{schl.email}}
+            </small> </br>
+            <small style="margin-left: 1vw; padding-bottom:2em;">
+                <span style="font-weight: bold;">
+                   Phone number:
+                </span> {{schl.contact}}</small>
+        </div>
         {% endfor %}
 
     </div>
-    <div class="col-2 mt-3"></div>
     <!--hosp-->
-    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+    <div class="col-3 mt-3">
         <p class='lead text-center mt-2'>Hospital</p>
         {% for hosp in hosps %}
-        {{hosp.hName}}
+            <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+                
+                <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
+                    {{hosp.hName}}
+                </h6>
+                <small style="margin-left: 1vw;">
+                    <span style="font-weight: bold;">
+                        Email:
+                    </span> {{hosp.email}}
+                </small> </br>
+                <small style="margin-left: 1vw; padding-bottom:2em;">
+                    <span style="font-weight: bold;">
+                    Phone number:
+                    </span> {{hosp.contact}}</small>
+            </div> 
         {% endfor %}
 
     </div>
     <!--police-->
-    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+    <div class="col-3 mt-3">
         <p class='lead text-center mt-2'>Police</p>
         {% for station in stations %}
-        {{station.stationName}}
-        {% endfor %}
+        <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+            
+            <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
+                {{station.stationName}}
+            </h6>
+            <small style="margin-left: 1vw;">
+                <span style="font-weight: bold;">
+                    Email:
+                </span> {{station.email}}
+            </small> </br>
+            <small style="margin-left: 1vw; padding-bottom:2em;">
+                <span style="font-weight: bold;">
+                Phone number:
+                </span> {{station.contact}}</small>
+        </div>         {% endfor %}
 
     </div>
 </div>
 </div>
-<div class="container mt-5">
-    <h1 class='display-2 text-center' style="font-size: 22px;">What's new in:  &nbsp;{{hood.zoneName}}&nbsp;</h1>
+<div class="container mt-3 " style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+    <h1 class='display-2 text-center mt-2' style="padding-top:1em; font-size: 22px;">What's new in:  &nbsp;{{hood.zoneName}}&nbsp;</h1>
 
 </div>
 {% endblock content %}
