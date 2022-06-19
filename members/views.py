@@ -63,12 +63,12 @@ def hoodHome(request):
 
 
 class addPost(LoginRequiredMixin, CreateView):
-    model: Post
-    fields=['title', 'post']
+    model = Post
+    fields = ['title', 'post']
     template_name = 'members/addPost.html'
     def form_valid(self, form):
         form.instance.author=self.request.user
-        form.instance.zone = self.request.user.hood
+        form.instance.zone = self.request.user.profile.zone
         return super().form_valid(form)
 
 

@@ -126,6 +126,9 @@
 </div>
 <div class="container mt-3 pb-3 mb-5" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
     <h1 class='display-2 text-center mt-2' style="padding-top:1em; font-size: 22px;">What's new in:  &nbsp;{{hood.zoneName}}&nbsp;</h1>
+    <a href="{% url 'addPost' %}" style="text-decoration: none;">
+        svg
+    </a>
     {% for post in posts %}
         <div class="col mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
             <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
