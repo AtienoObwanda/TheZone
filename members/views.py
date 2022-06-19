@@ -81,7 +81,7 @@ class addPost(LoginRequiredMixin, CreateView):
 class addBizz(LoginRequiredMixin, CreateView):
     model = business
     fields = ['bizName','email','contact']
-    template_name = 'members/addPost.html'
+    template_name = 'members/addBizz.html'
     def form_valid(self, form):
         form.instance.owner=self.request.user
         form.instance.zone = self.request.user.profile.zone
