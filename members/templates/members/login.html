@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-4"></div>
       <div class="col-4 pt-5 mt-5 formBg">
-        <h1 class="text-center">WELCOME BACK</h1>
+        <h1 class="text-center" style="color:rgb(97, 93, 93)">WELCOME BACK</h1>
         <form action="{% url 'login' %}" method="POST">
           {% csrf_token %} 
           {% for field in form %}
@@ -25,7 +25,7 @@
         <button type="submit" class=" button-34">LOGIN</button>
         </br>
         </br>
-        <small class="text-muted ">New to Mich? <a class="text-muted" href="{% url 'register' %}" style="text-decoration: none;">Sign Up</a></small>
+        <small class="text-muted ">New to The Zone? <a class="text-muted" href="{% url 'register' %}" style="text-decoration: none;">Sign Up</a></small>
       </br><small class="text-muted "><a class="text-muted" href="{% url 'home' %}" style="text-decoration: none;">Home</a></small>
         </form>
       </div>
