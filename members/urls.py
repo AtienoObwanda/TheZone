@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 from . import views
-from members.views import addBizz, addHood, addPost, addSchl, exitHood
+from members.views import addBizz, addHood, addHosp, addPost, addSchl, exitHood
 
 
 urlpatterns = [
@@ -19,6 +19,7 @@ urlpatterns = [
     path('add-post/', addPost.as_view(), name='addPost'),
     path('add-business/', addBizz.as_view(), name='addBizz'),
     path('add-school/', addSchl.as_view(), name='addSchl'),
+    path('add-hospital/', addHosp.as_view(), name='addHosp'),
 
 
 ]

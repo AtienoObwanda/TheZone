@@ -91,6 +91,15 @@ class addSchl(LoginRequiredMixin, CreateView):
         form.instance.zone = self.request.user.profile.zone
         return super().form_valid(form)
 
+class addHosp(LoginRequiredMixin, CreateView):
+    model = hospital
+    fields = ['hName','doctorsNum','nursesNum','email','contact']
+    template_name = 'members/addHosp.html'
+    def form_valid(self, form):
+        form.instance.owner=self.request.user
+        form.instance.zone = self.request.user.profile.zone
+        return super().form_valid(form)
+
 
 
 
