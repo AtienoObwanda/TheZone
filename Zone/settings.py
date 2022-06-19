@@ -160,7 +160,7 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 
-# LOGIN_REDIRECT_URL = 'joinhood'
+LOGIN_REDIRECT_URL = 'joinhood'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
 
