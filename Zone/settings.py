@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +44,10 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'crispy_forms',
     'hood',
-    'members'
+    'members',
+    'cloudinary',
+    'cloudinary_storage',
+
 ]
 
 MIDDLEWARE = [
@@ -120,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -129,9 +135,24 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+cloudinary.config( 
+  cloud_name = "dyiuol5sx", 
+  api_key = "226889347825597", 
+  api_secret = "gq5g9UhQzFd36mDRLqcOoIeEoOY" 
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : "dyiuol5sx",
+    'API_KEY' : "226889347825597",
+    'API_SECRET' : "gq5g9UhQzFd36mDRLqcOoIeEoOY",
+}
+
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

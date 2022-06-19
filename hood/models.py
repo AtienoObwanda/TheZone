@@ -9,6 +9,7 @@ class hood(models.Model):
     zoneOccupants = models.IntegerField(default=0)
     zoneAdmin = models.ForeignKey(User, on_delete=models.CASCADE)
     zoneCreationDate =  models.DateTimeField(default=timezone.now)
+    zoneImage = models.ImageField(default='default.png',upload_to='zonePics')
 
     def __str__(self):
             return str (self.zoneName)
