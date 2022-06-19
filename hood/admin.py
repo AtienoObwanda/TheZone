@@ -8,6 +8,7 @@ admin.site.register(hood)
 admin.site.register(school)
 admin.site.register(hospital)
 admin.site.register(policeStation)
+admin.site.register(Post)
 
 
 

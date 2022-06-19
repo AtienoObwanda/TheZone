@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -204,6 +205,7 @@ class school(models.Model):
         return zoneSchool
 
 class Post(models.Model):
+    title = models.CharField(max_length=30, blank=True)
     post=models.CharField(max_length=200)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     zone=models.ForeignKey(hood,on_delete=models.CASCADE)

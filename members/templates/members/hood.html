@@ -104,28 +104,31 @@
     <div class="col-3 mt-3">
         <p class='lead text-center mt-2'>Police</p>
         {% for station in stations %}
-        <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
-            
-            <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
-                {{station.stationName}}
-            </h6>
-            <small style="margin-left: 1vw;">
-                <span style="font-weight: bold;">
-                    Email:
-                </span> {{station.email}}
-            </small> </br>
-            <small style="margin-left: 1vw; padding-bottom:2em;">
-                <span style="font-weight: bold;">
-                Phone number:
-                </span> {{station.contact}}</small>
-        </div>         {% endfor %}
+            <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+                
+                <h6 style="margin-left: 1vw; padding-top:2em; font-weight: bold;">
+                    {{station.stationName}}
+                </h6>
+                <small style="margin-left: 1vw;">
+                    <span style="font-weight: bold;">
+                        Email:
+                    </span> {{station.email}}
+                </small> </br>
+                <small style="margin-left: 1vw; padding-bottom:2em;">
+                    <span style="font-weight: bold;">
+                    Phone number:
+                    </span> {{station.contact}}</small>
+            </div>
+        {% endfor %}
 
     </div>
 </div>
 </div>
 <div class="container mt-3 " style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
     <h1 class='display-2 text-center mt-2' style="padding-top:1em; font-size: 22px;">What's new in:  &nbsp;{{hood.zoneName}}&nbsp;</h1>
-
+    <div class="mb-3 pb-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius:15px;">
+    
+    </div>
 </div>
 {% endblock content %}
 
