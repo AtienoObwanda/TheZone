@@ -16,8 +16,11 @@
         <h1 class="text-center">WELCOME BACK</h1>
         <form action="{% url 'login' %}" method="POST">
           {% csrf_token %} 
-          {{ form|crispy}}    
-
+          {% for field in form %}
+          <div class="form-group">
+              <input id="{{ field.id_for_label }}" class="form-control mb-3" name="{{field.name}}" placeholder="{{field.name|title}}"> {{field.errors}}
+          </div>
+          {% endfor %} 
         </br>
         <button type="submit" class=" button-34">LOGIN</button>
         </br>
