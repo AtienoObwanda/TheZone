@@ -202,3 +202,8 @@ class school(models.Model):
     def getZoneSchool(cls, zone_id):
         zoneSchool= school.objects.filter(zone_id=zone_id).all()
         return zoneSchool
+
+class Post(models.Model):
+    post=models.CharField(max_length=200)
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    zone=models.ForeignKey(hood,on_delete=models.CASCADE)
