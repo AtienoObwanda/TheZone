@@ -82,6 +82,17 @@ class addBizz(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class addSchl(LoginRequiredMixin, CreateView):
+    model = school
+    fields = ['schlName','teachersNum','studentsNum','email','contact']
+    template_name = 'members/addSchl.html'
+    def form_valid(self, form):
+        form.instance.owner=self.request.user
+        form.instance.zone = self.request.user.profile.zone
+        return super().form_valid(form)
+
+
+
 
 
 
