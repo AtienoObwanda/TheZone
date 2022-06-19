@@ -1,5 +1,7 @@
 # The Zone
 The Zone is a neighborhood  a web application that allows you to be in the loop about everything happening in your neighborhood. From contact information of different handyman to meeting announcements or even alerts.
+You can sign up and join a neighborhood, leave the neighborhood and create a new neighborhood.
+You can also create a new businesses, schools, hospitals and posts, that will only be visible in your current neighborhood.
 
 
 ## Getting Started
