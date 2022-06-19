@@ -101,7 +101,14 @@ class addHosp(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-
+class addStation(LoginRequiredMixin, CreateView):
+    model = policeStation
+    fields = ['stationName','officers','email','contact']
+    template_name = 'members/addStation.html'
+    def form_valid(self, form):
+        form.instance.owner=self.request.user
+        form.instance.zone = self.request.user.profile.zone
+        return super().form_valid(form)
 
 
 
