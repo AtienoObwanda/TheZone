@@ -7,7 +7,7 @@ You can also create a new businesses, schools, hospitals and posts, that will on
 
 ## Getting Started
 
-To get a copy of the Zone running loccally on your end, you can:
+To get a copy of the Zone running locally on your end, you can:
 
 1. Clone this repository, by running git clone then:
 
