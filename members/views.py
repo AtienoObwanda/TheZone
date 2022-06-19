@@ -20,7 +20,7 @@ def register(request):
             form.save()
             # send_welcome_email(username,email)
             # HttpResponseRedirect('login')
-            return redirect('joinhood')
+            return redirect('login')
     else:
         form = UserRegistrationForm()
     return render(request, 'members/register.html', {'form': form}) 
