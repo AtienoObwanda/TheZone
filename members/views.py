@@ -1,3 +1,4 @@
+from dis import dis
 from multiprocessing.dummy import active_children
 from django.shortcuts import redirect, get_object_or_404, render
 from .forms import *
@@ -27,15 +28,6 @@ def getStarted(request):
     return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
 
 
-# def joinHood(request, pk):
-#     joinedHood = hood.objects.get(pk=pk)
-#     if request.user.profile.zone == None:
-#         request.user.profile.zone = joinedHood
-#         request.user.profile.save()
-#         return redirect('home')
-#     else:
-#         return redirect('joinhood')
-
 
 class addHood(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
@@ -53,12 +45,18 @@ class exitHood(LoginRequiredMixin, View):
 
 
 def hoodHome(request):
-    current_hood = request.user.profile.zone
-    if current_hood == None:
+    joinedHood = request.user.profile.zone
+    schls = school.objects.filter(zone=joinedHood.id).all() #  Fetch all Schools in the joined zone
+    hosps = hospital.objects.filter(zone=joinedHood.id).all() #  Fetch all Hospitals in the joined zone
+    stations = policeStation.objects.filter(zone=joinedHood.id).all() # Fetch all police stations in the joined zone
+    bizs = business.objects.filter(zone=joinedHood.id).all() # Fetch all businesses in the joined zone
+
+    if joinedHood == None:
         return redirect('joinHood')
     else:
-        showing = hood.objects.get(id=current_hood.id)
-        return render(request, 'members/hood.html', {'hood':showing})
+        displayedHood = hood.objects.get(id=joinedHood.id)
+        
+        return render(request, 'members/hood.html', {'hood':displayedHood, 'hosps': hosps,'stations':stations, 'bizs':bizs,'schls':schls})
 
 
 
