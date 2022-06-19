@@ -230,13 +230,6 @@ class Post(models.Model):
     def __str__(self):
             return str (self.title)
 
-    def __str__(self):
-            return str (self.zoneName)
-
-    def get_absolute_url(self):
-        return reverse('joinhood')
-
-
     # create
     def createPost(self):
         self.save()

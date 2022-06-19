@@ -75,3 +75,40 @@ class businessTest(TestCase):
         self.test_user.delete()
         self.test_hood.delete()
         business.objects.all().delete()
+
+
+class PostTest(TestCase):
+    def setUp(self):
+        self.test_user = User.objects.create(username='testuser' , password='testpassword')
+        self.test_user.save()
+
+        self.test_hood = hood(zoneName='Dite', zoneLocation='Eastlands', zoneOccupants  =12, zoneAdmin=self.test_user, zoneCreationDate=datetime.now())
+        self.test_hood.save()
+
+        self.test_post = Post(author=self.test_user, title='Test Post',post='post test', zone=self.test_hood)
+
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.test_post, Post))
+
+    def test_createPost(self):
+        self.test_post.createPost()
+        self.assertEqual(len(Post.objects.all()),1)
+
+    def test_findPost(self):
+        test_id = 1
+        getPost=Post.objects.filter(id=test_id)
+        self.assertEqual(len(getPost),0)
+
+    def test_updatePost(self):
+        self.test_post.updatePost(new_post='Test Update')
+        self.test_post.createPost()
+
+    def test_getAllPosts(self):
+        allPosts= Post.objects.all()
+        return allPosts
+
+    def tearDown(self):
+        self.test_user.delete()
+        self.test_hood.delete()
+        Post.objects.all().delete()
