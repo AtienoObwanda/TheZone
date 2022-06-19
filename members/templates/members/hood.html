@@ -1,8 +1,67 @@
-{{hood.zoneName}}
+
+{% extends "app/base.html" %}
+{% block content %}
+<div class='image-background hero' style="background-image: url('{{hood.zoneImage.url}}'); height: 500px;">
+    <div class='container-fluid h-100 mask' style="background-color: rgba(0, 0, 0, 0.4);">
+      <div class='row h-100 align-items-center'>
+        <div class='col-12 text-center'>
+        <p style="height:100px"></p>
+          <h1 class='display-2'>&nbsp;{{hood.zoneName}}&nbsp;</h1>
+          <p style="height:10px"></p>
+          <p class='lead'>Location: {{hood.zoneLocation}}</p>
+          <p class='lead' style="font-size:12px;">Population: {{hood.zoneOccupants}}</p>
+          <!-- <p class='lead'>Dets</p> -->
+
+          <p style="height:10px"></p>
+          <form method="POST" action="{% url 'exitHood' hood.pk %}">
+            {% csrf_token %}
+            <button class="btn btn-outline-primary btn-sm mt-2" type="submit button" style="text-decoration:none; color:#fff; font-weight: bolder;">
+                EXIT</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- POSTS | Police |Hospital| Schools |Bussinesses|-->
+<div class="container">
+<div class="row">
+    <div class="col-2 mt-3"></div>
+    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+        <p class='lead text-center mt-2'>Business</p>
+
+    </div>
+    <!--School-->
+    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+        <p class='lead text-center mt-2'>School</p>
+
+    </div>
+    <div class="col-2 mt-3"></div>
+    <!--hosp-->
+    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-right:1vw ;">
+        <p class='lead text-center mt-2'>Hospital</p>
+
+    </div>
+    <!--police-->
+    <div class="col-4 mt-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+        <p class='lead text-center mt-2'>Police</p>
+
+    </div>
+</div>
+</div>
+<div class="container mt-5">
+    <h1 class='display-2 text-center' style="font-size: 22px;">What's new in:  &nbsp;{{hood.zoneName}}&nbsp;</h1>
+
+</div>
+{% endblock content %}
+
+
+    
+
+
+    
 
 
 
-<form method="POST" action="{% url 'exitHood' hood.pk %}">
-    {% csrf_token %}
-    <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">EXIT</button>
-</form>
+
+
+
