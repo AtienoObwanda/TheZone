@@ -73,16 +73,8 @@ class addPost(LoginRequiredMixin, CreateView):
 
 
 
-# update profile
-def profile(request):
-   
-    return render(request, 'members/profile.html') 
 
 # view account
-class AccountView(LoginRequiredMixin,View):
-    def get(self, request, pk, *args, **kwargs):
-  
-        return render(request, 'members/dashboard.html')
 
       
 
