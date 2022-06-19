@@ -28,9 +28,15 @@ def register(request):
 def getStarted(request):
     hoods = hood.objects.all()
 
-    return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
+    return render(request, 'members/regComplete.html', {'hoods':hoods})
 
-
+class addNewHood(LoginRequiredMixin, CreateView):
+    model = hood
+    fields = ['zoneName','zoneLocation','zoneOccupants','zoneImage']
+    template_name = 'members/addZone.html'
+    def form_valid(self, form):
+        form.instance.zoneAdmin=self.request.user
+        return super().form_valid(form)
 
 class addHood(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):

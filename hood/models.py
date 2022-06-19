@@ -16,6 +16,10 @@ class hood(models.Model):
     def __str__(self):
             return str (self.zoneName)
 
+    def get_absolute_url(self):
+        return reverse('joinhood')
+
+
     # create
     def createHood(self):
         self.save()
