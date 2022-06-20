@@ -1,9 +1,0 @@
-SECRET_KEY='(o+kce2^342s(s(!hsjd998sde8$=o4$3m!97kp6#ujhi'
-DEBUG=True #set to false in production
-DB_NAME='jirani'
-DB_USER='atieno'
-DB_PASSWORD='mishi'
-DB_HOST='127.0.0.1'
-MODE='dev' #set to 'prod' in production
-ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
-DISABLE_COLLECTSTATIC=1
