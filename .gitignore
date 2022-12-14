@@ -1,5 +1,9 @@
-venv
-.env/
 env
-.venv
+.env
 
+venv/
+.venv/
+
+*.pyc
+db.sqlite3
+staticfiles/
